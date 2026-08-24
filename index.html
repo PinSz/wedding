@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ณารา &amp; ภูมิ — 13 กุมภาพันธ์ 2570</title>
+<title>ณารา &amp; ภูมิ — 11 กรกฎาคม 2570</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Trirong:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Sarabun:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
@@ -180,12 +180,14 @@ section{padding:clamp(4rem,10vw,7rem) 0}
 .field textarea{resize:vertical;min-height:74px}
 .field input:focus,.field textarea:focus,.field select:focus{outline:0;border-bottom-color:var(--paper)}
 .field select option{color:var(--ink)}
+.field .req{color:#F4D35E;margin-left:.15em}
+.form-req-note{font-size:.8rem;color:rgba(247,240,226,.7);margin:-0.4rem 0 1.1rem}
 .choices{display:flex;gap:.7rem;flex-wrap:wrap}
 .choice{
-  flex:1 1 160px;text-align:center;padding:.9rem 1rem;cursor:pointer;
+  position:relative;flex:1 1 160px;text-align:center;padding:.9rem 1rem;cursor:pointer;
   border:1px solid rgba(247,240,226,.4);border-radius:999px;font-size:.9rem;transition:.25s;
 }
-.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice input{position:absolute;inset:0;opacity:0;pointer-events:none}
 .choice:has(input:checked){background:var(--paper);color:var(--brick);border-color:var(--paper)}
 .choice:has(input:focus-visible){outline:2px solid var(--paper);outline-offset:3px}
 .btn-light{
@@ -258,7 +260,7 @@ footer p{font-size:.82rem;letter-spacing:.2em;color:var(--ink-soft);margin:.6rem
       <span>ภูมิ</span>
     </h1>
     <hr class="rule">
-    <p class="hero-date">เสาร์ที่ 13 กุมภาพันธ์ 2570 · กรุงเทพฯ</p>
+    <p class="hero-date">อาทิตย์ที่ 11 กรกฎาคม 2570 · กรุงเทพฯ</p>
     <p style="margin-top:1.8rem"><a class="btn" href="#rsvp">ตอบรับคำเชิญ</a></p>
   </div>
 </header>
@@ -299,7 +301,7 @@ footer p{font-size:.82rem;letter-spacing:.2em;color:var(--ink-soft);margin:.6rem
     <div class="detail-grid">
       <div class="detail-cell">
         <h3>วันที่</h3>
-        <p>เสาร์ที่ 13 กุมภาพันธ์<small>พ.ศ. 2570</small></p>
+        <p>อาทิตย์ที่ 11 กรกฎาคม<small>พ.ศ. 2570</small></p>
       </div>
       <div class="detail-cell">
         <h3>เวลา</h3>
@@ -354,8 +356,18 @@ footer p{font-size:.82rem;letter-spacing:.2em;color:var(--ink-soft);margin:.6rem
 
     <div class="form">
       <div class="field">
-        <label for="rname">ชื่อของคุณ</label>
+        <label for="rname">ชื่อของคุณ<span class="req">*</span></label>
         <input id="rname" type="text" placeholder="ชื่อ-นามสกุล" autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label for="rphone">เบอร์โทรติดต่อ<span class="req">*</span></label>
+        <input id="rphone" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="10" placeholder="0812345678" autocomplete="tel">
+      </div>
+
+      <div class="field">
+        <label for="remail">อีเมล (ถ้ามี)</label>
+        <input id="remail" type="email" placeholder="you@example.com" autocomplete="email">
       </div>
 
       <div class="field">
@@ -367,16 +379,21 @@ footer p{font-size:.82rem;letter-spacing:.2em;color:var(--ink-soft);margin:.6rem
       </div>
 
       <div class="field">
+        <label>ญาติฝั่งไหน<span class="req">*</span></label>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="side" value="M">ชาย</label>
+          <label class="choice"><input type="radio" name="side" value="W">หญิง</label>
+        </div>
+      </div>
+
+      <div class="field">
         <label for="rcount">จำนวนผู้ร่วมงาน</label>
         <select id="rcount">
           <option>1 ท่าน</option><option>2 ท่าน</option><option>3 ท่าน</option><option>4 ท่าน</option><option>5 ท่านขึ้นไป</option>
         </select>
       </div>
 
-      <div class="field">
-        <label for="rnote">ข้อความถึงเรา หรืออาหารที่ทานไม่ได้</label>
-        <textarea id="rnote" placeholder="เช่น แพ้อาหารทะเล / ทานมังสวิรัติ / คำอวยพร"></textarea>
-      </div>
+      <p class="form-req-note">* จำเป็นต้องกรอก</p>
 
       <button class="btn btn-light" id="makeMsg" type="button">ส่งคำตอบรับ</button>
 
@@ -396,14 +413,14 @@ footer p{font-size:.82rem;letter-spacing:.2em;color:var(--ink-soft);margin:.6rem
 <footer>
   <div class="wrap">
     <div class="names-sm">ณารา &amp; ภูมิ</div>
-    <p>13 · 02 · 2570</p>
+    <p>11 · 07 · 2570</p>
   </div>
 </footer>
 
 <script>
 (function(){
   // ---- countdown ----
-  var target = new Date("2027-02-13T17:00:00+07:00").getTime();
+  var target = new Date("2027-07-11T17:00:00+07:00").getTime();
   var d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),
       m=document.getElementById('cd-m'),s=document.getElementById('cd-s'),
       note=document.getElementById('countNote'),grid=document.getElementById('countGrid');
@@ -435,28 +452,48 @@ footer p{font-size:.82rem;letter-spacing:.2em;color:var(--ink-soft);margin:.6rem
   // ==========================================================
   //  วางลิงก์ Google Apps Script (ลงท้าย /exec) ระหว่างเครื่องหมายคำพูด
   //  ถ้าเว้นว่างไว้ ฟอร์มจะกลับไปใช้โหมดคัดลอกข้อความเหมือนเดิม
-  var SHEET_URL = "";
+  var SHEET_URL = "https://script.google.com/macros/s/AKfycbwDg4-IKdPA_DK-BZkRyPjRHcoKQ7TGYCe-5nOex3BAKsOCKd7RBbNd2Bs_Zsx-h5Pz/exec";
   // ==========================================================
 
   var out=document.getElementById('output'), msgText=document.getElementById('msgText'),
       actions=document.querySelector('.output-actions'), sendBtn=document.getElementById('makeMsg');
 
+  var lastError = '';
+  var rphoneEl = document.getElementById('rphone');
+  rphoneEl.addEventListener('input', function(){
+    this.value = this.value.replace(/\D/g,'').slice(0,10);
+  });
+
   function collect(){
     var name=(document.getElementById('rname').value||'').trim();
-    if(!name){ document.getElementById('rname').focus(); return null; }
+    if(!name){ document.getElementById('rname').focus(); lastError='กรอกชื่อของคุณก่อนนะ แล้วกดส่งอีกครั้ง'; return null; }
+
+    var phone=(rphoneEl.value||'').trim();
+    if(!/^[0-9]{10}$/.test(phone)){ rphoneEl.focus(); lastError='กรอกเบอร์โทรให้ครบ 10 หลัก (ตัวเลขล้วน) แล้วกดส่งอีกครั้ง'; return null; }
+
+    var email=(document.getElementById('remail').value||'').trim();
+    if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ document.getElementById('remail').focus(); lastError='รูปแบบอีเมลไม่ถูกต้อง แก้แล้วกดส่งอีกครั้ง (หรือเว้นว่างไว้ก็ได้)'; return null; }
+
+    var sideEl=document.querySelector('input[name=side]:checked');
+    if(!sideEl){ lastError='เลือกว่าเป็นญาติฝั่งไหนก่อนนะ แล้วกดส่งอีกครั้ง'; return null; }
+
     return {
       name:name,
+      phone:phone,
+      email:email,
+      side:sideEl.value,
       attend:document.querySelector('input[name=attend]:checked').value,
-      count:document.getElementById('rcount').value,
-      note:(document.getElementById('rnote').value||'').trim()
+      count:document.getElementById('rcount').value
     };
   }
   function asText(f){
     return 'ตอบรับงานแต่งงาน ณารา & ภูมิ\n'+
            'ชื่อ: '+f.name+'\n'+
+           'เบอร์โทร: '+f.phone+'\n'+
+           (f.email?'อีเมล: '+f.email+'\n':'')+
+           'ญาติฝั่ง: '+(f.side==='M'?'ชาย':'หญิง')+'\n'+
            'สถานะ: '+f.attend+'\n'+
-           (f.attend==='มาร่วมงาน'?'จำนวน: '+f.count+'\n':'')+
-           (f.note?'ข้อความ: '+f.note+'\n':'');
+           (f.attend==='มาร่วมงาน'?'จำนวน: '+f.count+'\n':'');
   }
   function showFallback(f,lead){
     msgText.textContent=(lead?lead+'\n\n':'')+asText(f);
@@ -468,7 +505,7 @@ footer p{font-size:.82rem;letter-spacing:.2em;color:var(--ink-soft);margin:.6rem
 
   sendBtn.addEventListener('click',function(){
     var f=collect();
-    if(!f){ msgText.textContent='กรอกชื่อของคุณก่อนนะ แล้วกดส่งอีกครั้ง'; actions.style.display='none'; out.classList.add('show'); return; }
+    if(!f){ msgText.textContent=lastError||'กรอกข้อมูลให้ครบก่อนนะ แล้วกดส่งอีกครั้ง'; actions.style.display='none'; out.classList.add('show'); out.scrollIntoView({block:'nearest'}); return; }
 
     if(!SHEET_URL){ showFallback(f); return; }
 
